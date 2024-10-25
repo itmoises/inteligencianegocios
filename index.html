@@ -3,9 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hola Mundo</title>
+    <title>Simulación Carrito de Compras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        #carrito {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #000;
+            display: inline-block;
+        }
+        .boton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .boton:hover {
+            background-color: #45a049;
+        }
+        .producto {
+            margin-bottom: 20px;
+        }
+        img {
+            width: 150px;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    <h1>¡Hola, mundo!</h1>
+    <h1>Carrito de Compras</h1>
+
+    <div class="producto">
+        <img src="th.jpg" alt="Camisa Tommy">
+        <p>Camisa Tommy Hilfiger - $1200 MXN</p>
+        <button class="boton" onclick="agregarAlCarrito('Camisa Tommy Hilfiger')">Agregar al carrito</button>
+    </div>
+
+    <button class="boton" onclick="verCarrito()">Ver carrito</button>
+
+    <div id="carrito">
+        <h2>Contenido del Carrito</h2>
+        <p id="contenidoCarrito">No hay productos en el carrito</p>
+    </div>
+
+    <script>
+        let carrito = [];
+
+        function agregarAlCarrito(producto) {
+            carrito.push(producto);
+            alert(producto + " ha sido agregado al carrito.");
+        }
+
+        function verCarrito() {
+            const contenidoCarrito = document.getElementById("contenidoCarrito");
+            if (carrito.length === 0) {
+                contenidoCarrito.textContent = "No hay productos en el carrito";
+            } else {
+                contenidoCarrito.textContent = "Productos en el carrito: " + carrito.join(", ");
+            }
+        }
+    </script>
 </body>
 </html>
